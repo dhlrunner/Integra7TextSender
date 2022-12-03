@@ -135,6 +135,8 @@ namespace integraTextSender
                     tbxText.Enabled = true;
                     cbxAutoSend.Enabled = true;
                     btnSend.Enabled = true;
+                    cbxClockMode.Enabled = true;
+                    label3.Visible = false;
                 }
                 catch(Exception ex)
                 {
@@ -173,6 +175,34 @@ namespace integraTextSender
         private void llblSysEx_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Clipboard.SetText(llblSysEx.Text);
+        }
+
+        private void cbxClockMode_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        byte c = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (cbxClockMode.Checked)
+            {
+                if(c > 8)
+                {
+                    c = 0;
+                }
+                else if(c > 5)
+                {
+                    sendText(DateTime.Now.ToString("yyyy-MM-dd"), (byte)numChan.Value);
+                    c++;
+                }
+                else
+                {
+                    sendText(DateTime.Now.ToString("HH:mm:ss"), (byte)numChan.Value);
+                    c++;
+                }
+               
+            }
         }
     }
 }

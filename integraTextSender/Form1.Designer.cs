@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.numChan = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tbxText = new System.Windows.Forms.TextBox();
@@ -36,6 +37,9 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.cmbMididev = new System.Windows.Forms.ComboBox();
             this.llblSysEx = new System.Windows.Forms.LinkLabel();
+            this.cbxClockMode = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numChan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,11 +142,41 @@
             this.llblSysEx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.llblSysEx.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblSysEx_LinkClicked);
             // 
+            // cbxClockMode
+            // 
+            this.cbxClockMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxClockMode.AutoSize = true;
+            this.cbxClockMode.Enabled = false;
+            this.cbxClockMode.Location = new System.Drawing.Point(299, 88);
+            this.cbxClockMode.Name = "cbxClockMode";
+            this.cbxClockMode.Size = new System.Drawing.Size(82, 17);
+            this.cbxClockMode.TabIndex = 8;
+            this.cbxClockMode.Text = "Clock mode";
+            this.cbxClockMode.UseVisualStyleBackColor = true;
+            this.cbxClockMode.CheckedChanged += new System.EventHandler(this.cbxClockMode_CheckedChanged);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "↓↓Select your INTEGRA-7 midi device↓↓";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 122);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbxClockMode);
             this.Controls.Add(this.llblSysEx);
             this.Controls.Add(this.cmbMididev);
             this.Controls.Add(this.btnSend);
@@ -171,6 +205,9 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.ComboBox cmbMididev;
         private System.Windows.Forms.LinkLabel llblSysEx;
+        private System.Windows.Forms.CheckBox cbxClockMode;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
